@@ -1,0 +1,25 @@
+FROM golang:1.20 AS builder
+
+WORKDIR /
+
+RUN mkdir -p /go/src/temp_go
+
+#RUN apk add --update bind-tools
+
+#RUN dig -v
+
+WORKDIR /go/src/temp_go
+
+COPY go.mod .
+COPY go.sum .
+
+COPY . .
+RUN go build cmd/main.go
+RUN 
+
+
+FROM gcr.io/distroless/base-debian11:debug AS runner
+
+COPY --from=builder /go/src/temp_go/main /
+
+ENTRYPOINT ["/main"]
