@@ -103,7 +103,7 @@ func main() {
 		}
 
 	}()
-	fmt.Println("Stopeakimas22")
+	fmt.Println("Stopeakimas42")
 	//upd_listener := net.ListenUDP("udp4",nil)
 
 	//handle 3333 listener
